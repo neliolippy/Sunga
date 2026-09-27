@@ -24,17 +24,11 @@ jobs:
   uses: android-actions/setup-android@v4
   with:
     packages: 'platform-tools'
-
-      - name: Instalar Android SDK
-        run: |
-          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
-
-      - name: Configurar Gradle
+ - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.10'
-
-      - name: Compilar Sunga
+- name: Compilar Sunga
         run: gradle assembleDebug --no-daemon
 
       - name: Guardar APK
