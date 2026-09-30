@@ -21,17 +21,17 @@ jobs:
           java-version: '17'
 
       - name: Configurar Android
-  uses: android-actions/setup-android@v4
-  
- - name: Configurar Gradle
+        uses: android-actions/setup-android@v3
+
+      - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.10'
-- name: Compilar Sunga
-        run: gradle assembleDebug --no-daemon
+
+      - name: Compilar Sunga
+        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon
 
       - name: Guardar APK
         uses: actions/upload-artifact@v4
         with:
           name: sunga-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
           path: app/build/outputs/apk/debug/app-debug.apk
